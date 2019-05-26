@@ -1,0 +1,27 @@
+<div class="confirmation-wrapper" *ngIf="formValues">
+  <h2>You've entered:</h2>
+
+  <ul>
+    <li>
+      <span>Title:</span> {{ formValues.titleGroup.title }}
+    </li>
+    <li>
+      <span>First Name:</span> {{ formValues.firstName }}
+    </li>
+    <li>
+      <span>Last Name:</span> {{ formValues.lastName }}
+    </li>
+    <li *ngIf="formValues.username">
+      <span>Username:</span> {{ formValues.username }}
+    </li>
+    <li *ngIf="formValues.favouriteMovie">
+      <span>Favourite Movie:</span> {{ formValues.favouriteMovie }}
+    </li>
+    <li *ngIf="formValues.postCode">
+      <span>Postcode:</span> {{ formValues.postCode }}
+    </li>
+    <li>
+      <span>Country:</span> {{ formValues.countryGroup.country }}
+    </li>
+  </ul>
+</div>

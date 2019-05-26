@@ -1,0 +1,16 @@
+@import '../../../../core/template/_templateVariables';
+
+:host {
+  ul {
+    list-style-type: none;
+
+    li {
+      font-weight: 300;
+      color: $primary;
+
+      span {
+        color: $contrast-500;
+      }
+    }
+  }
+}

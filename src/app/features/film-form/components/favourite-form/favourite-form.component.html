@@ -1,0 +1,66 @@
+<div class="container" [formGroup]="favouriteFilmForm">
+  <div class="input-wrapper" formGroupName="titleGroup">
+    <label>Title</label>
+    <select formControlName="title">
+      <option *ngFor="let title of titles" [value]="title">{{ title }}</option>
+    </select>
+  </div>
+
+  <div class="input-wrapper">
+    <label>First Name</label>
+    <input type="text" formControlName="firstName" required>
+    <div class="invalid-wrapper" [ngClass]="{'invisible': getFormControl('firstName').valid}">* Required and cannot contain numbers</div>
+  </div>
+
+  <div class="input-wrapper">
+    <label>Last Name</label>
+    <input type="text" [ngClass]="{'disabled': !getFormControl('firstName').value}" formControlName="lastName" required>
+    <div class="invalid-wrapper" [ngClass]="{'invisible': getFormControl('lastName').valid}">* Required and cannot contain numbers</div>
+  </div>
+
+  <div class="input-wrapper">
+    <label>Username</label>
+    <input type="text" formControlName="username">
+    <div class="invalid-wrapper" [ngClass]="{'invisible': getFormControl('username').valid}">* At least 5 characters long or email</div>
+  </div>
+
+  <div class="input-wrapper">
+    <label>Favourite Movie</label>
+    <ng-autocomplete
+      [data]="testMovies"
+      [searchKeyword]="keyword"
+      (selected)='selectEvent($event)'
+      (inputChanged)='onChangeSearch($event)'
+      [itemTemplate]="itemTemplate">
+    </ng-autocomplete>
+
+    <ng-template #itemTemplate let-item>
+      <a [innerHTML]="item.Title"></a>
+    </ng-template>
+    <div class="invalid-wrapper invisible">Invalid Message</div>
+  </div>
+
+  <div class="input-wrapper" formGroupName="countryGroup">
+    <label>Country</label>
+    <select formControlName="country" required>
+      <option *ngFor="let country of countries" value="{{ country }}">{{ country }}</option>
+    </select>
+    <div class="invalid-wrapper invisible">Invalid Message</div>
+  </div>
+
+  <div class="input-wrapper">
+    <label [hidden]="getFormControl(['countryGroup', 'country']).value === countries[0]">Postcode</label>
+    <label [hidden]="getFormControl(['countryGroup', 'country']).value === countries[1]">Eircode</label>
+    <input type="text" formControlName="postCode">
+    <div class="invalid-wrapper" [ngClass]="{'invisible': getFormControl('postCode').valid}">
+      <span *ngIf="getFormControl(['countryGroup', 'country']).value === countries[0]; else UK">* Between 6 - 10 characters</span>
+      <ng-template #UK>
+        <span>Invalid Postcode</span>
+      </ng-template>
+    </div>
+  </div>
+
+  <button class="button" type="submit" (click)="submitForm()">Submit</button>
+</div>
+
+{{ favouriteFilmForm.valid }}

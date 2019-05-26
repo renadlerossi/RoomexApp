@@ -1,0 +1,24 @@
+@import '../../../../core/template/_templateVariables';
+
+:host {
+  display: flex;
+
+  .form-wrapper {
+    flex: 400px 0 1;
+    margin: 50px 5%;
+    border: 1px solid $contrast-500;
+    border-radius: $box-radius;
+    padding: $main-padding;
+  }
+
+  .movie-poster {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    width: calc(100% - 600px);
+
+    img {
+      margin: auto;
+    }
+  }
+}

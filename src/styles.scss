@@ -1,0 +1,62 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,500');
+@import './app/core/template/_templateVariables';
+@import '~ngx-toastr/toastr';
+
+body {
+  background: $body-bg;
+  font-family: 'Montserrat', sans-serif;
+  color: $contrast-500;
+  letter-spacing: 0.07em;
+}
+
+// Autocomplete hard resets
+.ng-autocomplete {
+  width: 100% !important;
+
+  .autocomplete-container {
+    box-shadow: none;
+    position: initial;
+    overflow: unset;
+    height: initial;
+
+    .input-container input {
+      width: 100%;
+      padding: 5px;
+      background: $contrast-50;
+      color: $contrast-500;
+      font-weight: 300;
+      border: 1px solid $contrast-50;
+      transition: all ease-in-out $animation-speed;
+      height: initial;
+      line-height: 120%;
+      font-size: 11px;
+
+      &:focus {
+        outline: none;
+      }
+
+      &.disabled {
+        opacity: 0.3;
+      }
+    }
+  }
+
+  .suggestions-container {
+    width: 450px !important;
+
+    ul {
+      background: $contrast-700;
+
+      li a {
+        color: $contrast-250 !important;
+        font-weight: 300;
+
+        b {
+          font-weight: 500;
+          color: $contrast-500;
+        }
+      }
+    }
+  }
+}

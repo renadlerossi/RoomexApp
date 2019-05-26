@@ -1,0 +1,8 @@
+<div class="form-wrapper">
+  <app-favourite-form (moviePoster)="printPoster($event)"></app-favourite-form>
+</div>
+
+
+<div class="movie-poster" *ngIf="moviePoster">
+  <img [src]="moviePoster" />
+</div>

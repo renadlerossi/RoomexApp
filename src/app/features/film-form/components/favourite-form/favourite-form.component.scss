@@ -1,0 +1,76 @@
+@import '../../../../core/template/templateVariables';
+
+:host {
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+
+    .input-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      flex: 1 1 calc(50% - #{$main-padding * 2});
+      padding: $main-padding;
+
+      &:first-child {
+        flex: 1 1 calc(100% - #{$main-padding * 2});
+
+        select {
+          width: calc(50% - #{$main-padding});
+        }
+      }
+
+      label {
+        width: 100%;
+      }
+
+      input, select {
+        margin-top: 5px;
+        width: 100%;
+        padding: 5px;
+        background: $contrast-50;
+        color: $contrast-500;
+        font-weight: 300;
+        border: 1px solid $contrast-50;
+        transition: all ease-in-out $animation-speed;
+
+        &:focus {
+          outline: none;
+        }
+
+        &.disabled {
+          opacity: 0.3;
+        }
+      }
+
+      .invalid-wrapper {
+        margin-top: 5px;
+        font-size: 0.6em;
+        color: $warning;
+
+        &.invisible {
+          visibility: hidden;
+        }
+      }
+    }
+
+    .button {
+      padding: $main-padding;
+      border: none;
+      border-radius: $box-radius;
+      background-color: $primary;
+      color: $contrast-500;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all ease-in-out $animation-speed;
+      margin: $main-padding $main-padding $main-padding auto;
+
+      &:hover {
+        box-shadow: 5px 5px 15px 0 $primary-dark;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
